@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>HashPash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<style type="text/css">*{font-family:sans-serif;font-weight:300;border-radius:.1em;line-height:1.5}
+label,input{width:100%;float:left}
+input{margin:0 0 1em;font-size:1em;border:0;padding:.3em}
+form{background:#036;color:#fff;float:left;padding:1em;}
+section,footer{width:100%;float:left;clear:left;}
+footer{font-size:0.7em;border-top:1px solid #eee;padding: 1em 0;}
+input[name=mash]{background:#036;color:#777;margin:0}
+a{color:#036;}</style>
+<body>
+  <h1>HashPash</h1><p>Make unique passwords without writing them down. How? Read <a href="#howitworks">how it works</a>.</p>
+  <form method="post">
+    <label>
+      Hash (e.g. Facebook):<input name="hash" type="text" autocorrect="off" placeholder="sitename" autocapitalize="off"><br/>
+    </label>
+    <label>
+      Pass(word):<input name="pass" type="password" autocorrect="off" autocapitalize="off"><br/>
+    </label>
+    <input type="submit" value="Mash it" name="submit"/><br/>
+    <label>
+      Mash (the unique password):<input name="mash" type="text" readonly><br/>
+    </label>
+  </form>
+  <section>
+  <h3 id="howitworks">How it works</h3>
+    <ol><li>Enter the sitename (the hash) you want to create an unique password for (press tab)</li>
+    <li>Enter your (reusable) password</li>
+    <li>Copy the generated password (the mash) and you're save to go.</li>
+    </ol>
+  </section>
+  <section>
+  <h3>Save to go?</h3>
+  <p>HashPash uses the strong <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a> function, this makes it practically impossible for sites to decrypt your generated password.</p>
+  <h3>Don't trust this server?</h3>
+  <p>Save this page somewhere you'd like to keep it save, everything is contained. It works without an internet connection!</p>
+  </section>
+  <footer>
+    HashPash was made by <a href="https://murb.nl">murb</a>.
+  </footer>
+  <script src="scrypt.js"></script>
+  <script src="mash.js"></script>
+</body>
+</html>
