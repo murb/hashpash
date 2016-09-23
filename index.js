@@ -4,7 +4,8 @@ var http = require("http"),
     fs = require("fs"),
     qs = require('querystring'),
     scrypt = require('./scrypt.js'),
-    port = process.argv[2] || 8888;
+    port = process.env.PORT || process.argv[2] || 8888;
+
 
 http.createServer(function(request, response) {
   if (request.method == 'POST') {
