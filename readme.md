@@ -29,4 +29,4 @@ The script.js is made by Joey Hewitt, based on the work of Intalio Pte, who rele
 
 ## Alternatives
 
-The idea is not unique, since 2005 we already have [PwdHash](https://www.pwdhash.com/). HashPash improves on this with its size, encryption method and its ability to run standalone.
+The idea is not unique, since 2005 we already have [PwdHash](https://www.pwdhash.com/). HashPash improves on this with its size, encryption method and its ability to run standalone. Recently I also found out about [LessPass](https://lesspass.com/#/). It has better visual design than hashpash and comes with browser plugins. It is not as easy to self-host it, though and it uses SHA256-HMAC, which [may be considered less secure](http://stackoverflow.com/questions/26311686/bcrypt-vs-pbkdf2withhmacsha1)
