@@ -5,17 +5,22 @@ nil=function(){
       dfe["hash"].value,
       dfe["pass"].value,
       32, 8, 1, 64, function(result){
-        mash = String.fromCharCode.apply(null, result).replace(/[^\x20-\x70]/g, "");
+        mash = String.fromCharCode.apply(null, result).replace(/[^\x20-\x7e]/g, "");
+        if (dfe["lno"].checked) {
+          mash = String.fromCharCode.apply(null, result).replace(/[^\x30-\x39\x41-\x5a\x41-\x5a\x61-\x7a]/g, "");
+        }
     		dfe["mash"].value = mash
         if (dfe["pass"].value != "") dfe["mash"].select();
         pf = function(e){
           dfe["mash"].select();
-          document.execCommand("Copy");
+          dfe["mash"].selectionStart=0;
+          dfe["mash"].selectionEnd=mash.length;
+          document.execCommand("copy");
           setTimeout(function(e){
             dfe["mash"].select();
             dfe["mash"].selectionStart=0;
             dfe["mash"].selectionEnd=mash.length;
-            document.execCommand("Copy");
+            document.execCommand("copy");
           },60)
         };
         dfe["mash"].onclick = pf;
@@ -26,4 +31,5 @@ nil=function(){
   dfe["submit"].style.display = 'none';
   dfe["hash"].onchange = mashIt;
   dfe["pass"].onchange = mashIt;
+  dfe["lno"].onchange = mashIt;
 }()
