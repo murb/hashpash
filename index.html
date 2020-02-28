@@ -1,1 +1,311 @@
-<html><head><meta http-equiv="Content-type" content="text/html; charset=utf-8"><title>HashPash</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head><style type="text/css">*{font-family:sans-serif;font-weight:300;border-radius:.1em;line-height:1.5}label,input[type="password"],input[type="submit"],input[type="text"]{width:100%;float:left}input{margin:0 0 1em;font-size:1em;border:0;padding:.3em}form{background:#036;color:#fff;float:left;padding:1em;}section,footer{width:100%;float:left;clear:left;}footer{font-size:0.7em;border-top:1px solid #eee;padding: 1em 0;}input[name=mash]{background:#036;color:#777;margin:0}a{color:#036;}</style><body><h1>HashPash</h1><p>Make unique passwords without writing them down. How? Read <a href="#howitworks">how it works</a>.</p><form method="post"><label>Hash (e.g. Facebook):<input name="hash" type="text" autocorrect="off" placeholder="sitename" autocapitalize="off"><br/></label><label>Pash(word):<input name="pass" type="password" autocorrect="off" autocapitalize="off"><br/></label><input type="submit" value="Mash it" name="submit"/><br/><label>Mash (the unique password):<input name="mash" type="text" readonly><br/></label><label><input type="checkbox" name="lno">Letters and numbers only</label></form><section><h3 id="howitworks">How it works</h3><ol><li>Enter the sitename (the hash) you want to create an unique password for</li><li>Enter your (reusable) Pashword</li><li>Copy the generated password (the mash) and you're save to go.</li></ol></section><section><h3>Save to go?</h3><p>HashPash uses the strong <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a> function,which makes it practically impossible for someone who has obtained the generated mash to decrypt it back to yourvery private Pashword.</p><h3>Don't trust this server?</h3><p>Save this page somewhere you'd like to keep it save. It works even from your Documents-folder and/or without an internet connection!</p></section><footer>HashPash was made by <a href="https://murb.nl">murb</a>.</footer><script>!function(h){"use strict";var r,v,t,p,o,d,e,n,s,i,a,u,l,B,c,T,b,w=2147483647,S=null;h.Crypto_scrypt=function(a,r,v,p,d,u,c,t){function o(){function a(r,t){try{l=new Uint8Array(256*r),B=new Uint8Array(128*r*t)}catch(n){l=[],B=[]}}function u(r,t,n,o,e,i){var s,a=0,u=128*n;for(h(r,t,i,a,u),s=0;s<o;s++)h(i,a,e,s*u,u),c(i,a,u,n);for(s=0;s<o;s++){f(e,(y(i,a,n)&o-1)*u,i,a,u),c(i,a,u,n)}h(i,a,r,t,u)}function c(r,t,n,o){var e,i=[];for(h(r,t+64*(2*o-1),i,0,64),e=0;e<2*o;e++)f(r,64*e,i,0,64),s(i),h(i,0,r,n+64*e,64);for(e=0;e<o;e++)h(r,n+2*e*64,r,t+64*e,64);for(e=0;e<o;e++)h(r,n+64*(2*e+1),r,t+64*(e+o),64)}function i(r,t){return r<<t|r>>>32-t}function s(r){var t,n=new Array(32),o=new Array(32);for(t=0;t<16;t++)n[t]=(255&r[4*t+0])<<0,n[t]|=(255&r[4*t+1])<<8,n[t]|=(255&r[4*t+2])<<16,n[t]|=(255&r[4*t+3])<<24;for(g(n,0,o,0,16),t=8;0<t;t-=2)o[4]^=i(o[0]+o[12],7),o[8]^=i(o[4]+o[0],9),o[12]^=i(o[8]+o[4],13),o[0]^=i(o[12]+o[8],18),o[9]^=i(o[5]+o[1],7),o[13]^=i(o[9]+o[5],9),o[1]^=i(o[13]+o[9],13),o[5]^=i(o[1]+o[13],18),o[14]^=i(o[10]+o[6],7),o[2]^=i(o[14]+o[10],9),o[6]^=i(o[2]+o[14],13),o[10]^=i(o[6]+o[2],18),o[3]^=i(o[15]+o[11],7),o[7]^=i(o[3]+o[15],9),o[11]^=i(o[7]+o[3],13),o[15]^=i(o[11]+o[7],18),o[1]^=i(o[0]+o[3],7),o[2]^=i(o[1]+o[0],9),o[3]^=i(o[2]+o[1],13),o[0]^=i(o[3]+o[2],18),o[6]^=i(o[5]+o[4],7),o[7]^=i(o[6]+o[5],9),o[4]^=i(o[7]+o[6],13),o[5]^=i(o[4]+o[7],18),o[11]^=i(o[10]+o[9],7),o[8]^=i(o[11]+o[10],9),o[9]^=i(o[8]+o[11],13),o[10]^=i(o[9]+o[8],18),o[12]^=i(o[15]+o[14],7),o[13]^=i(o[12]+o[15],9),o[14]^=i(o[13]+o[12],13),o[15]^=i(o[14]+o[13],18);for(t=0;t<16;++t)n[t]=o[t]+n[t];for(t=0;t<16;t++){var e=4*t;r[e+0]=n[t]>>0&255,r[e+1]=n[t]>>8&255,r[e+2]=n[t]>>16&255,r[e+3]=n[t]>>24&255}}function f(r,t,n,o,e){for(var i=e>>6;i--;)for(var s=0;s<32;s++)n[o++]^=r[t++],n[o++]^=r[t++]}function y(r,t,n){var o;return o=(255&r[(t+=64*(2*n-1))+0])<<0,o|=(255&r[t+1])<<8,o|=(255&r[t+2])<<16,o|=(255&r[t+3])<<24}function g(r,t,n,o,e){for(;e--;)n[o++]=r[t++]}function h(r,t,n,o,e){for(var i=e>>5;i--;)for(var s=0;s<16;s++)n[o++]=r[t++],n[o++]=r[t++]}var l,B;if(void 0===T)onmessage=function(r){var t=r.data,n=t[0],o=t[1],e=(t[2],t[3]),i=t[4];l||a(o,n);var s=[];h(e,128*i*o,s,0,128*o),u(s,0,o,n,B,l),postMessage([i,s])};else{l||a(p,v);for(var r=0;r<d;r++)u(T,128*r*p,p,v,B,l)}}if(0==v||0!=(v&v-1))throw new Error("N must be > 0 and a power of 2");if(w/128/p<v)throw new Error("N is too large");if(w/128/d<p)throw new Error("r is too large");var f={iterations:1,hasher:h.Crypto.SHA256,asBytes:!0},T=h.Crypto.PBKDF2(a,r,128*d*p,f);try{for(var y=0,g=0,n=function(){if(!S){var r,t="("+o.toString()+")()";try{r=new Blob([t],{type:"text/javascript"})}catch(n){window.BlobBuilder=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,(r=new BlobBuilder).append(t),r=r.getBlob("text/javascript")}S=URL.createObjectURL(r)}var s=new Worker(S);return s.onmessage=function(r){var t=r.data[0],n=r.data[1];y<d&&s.postMessage([v,p,d,T,y++]);for(var o=n.length,e=128*t*p,i=0;o--;)T[e++]=n[i++];++g==d&&c(h.Crypto.PBKDF2(a,T,u,f))},s},e=Math.min(t||2,d);0<e;e--)n().postMessage([v,p,d,T,y++])}catch(i){setTimeout(function(){o(),c(h.Crypto.PBKDF2(a,T,u,f))},0)}},("undefined"==typeof Crypto||!Crypto.util)&&function(){var r,i="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",n=(r=h.Crypto={}).util={rotl:function(r,t){return r<<t|r>>>32-t},rotr:function(r,t){return r<<32-t|r>>>t},endian:function(r){if(r.constructor==Number)return 16711935&n.rotl(r,8)|4278255360&n.rotl(r,24);for(var t=0;t<r.length;t++)r[t]=n.endian(r[t]);return r},randomBytes:function(r){for(var t=[];0<r;r--)t.push(Math.floor(256*Math.random()));return t},bytesToWords:function(r){for(var t=[],n=0,o=0;n<r.length;n++,o+=8)t[o>>>5]|=(255&r[n])<<24-o%32;return t},wordsToBytes:function(r){for(var t=[],n=0;n<32*r.length;n+=8)t.push(r[n>>>5]>>>24-n%32&255);return t},bytesToHex:function(r){for(var t=[],n=0;n<r.length;n++)t.push((r[n]>>>4).toString(16)),t.push((15&r[n]).toString(16));return t.join("")},hexToBytes:function(r){for(var t=[],n=0;n<r.length;n+=2)t.push(parseInt(r.substr(n,2),16));return t},bytesToBase64:function(r){for(var t=[],n=0;n<r.length;n+=3)for(var o=r[n]<<16|r[n+1]<<8|r[n+2],e=0;e<4;e++)8*n+6*e<=8*r.length?t.push(i.charAt(o>>>6*(3-e)&63)):t.push("=");return t.join("")},base64ToBytes:function(r){r=r.replace(/[^A-Z0-9+\/]/gi,"");for(var t=[],n=0,o=0;n<r.length;o=++n%4)0!=o&&t.push((i.indexOf(r.charAt(n-1))&Math.pow(2,-2*o+8)-1)<<2*o|i.indexOf(r.charAt(n))>>>6-2*o);return t}};(r=r.charenc={}).UTF8={stringToBytes:function(r){return t.stringToBytes(unescape(encodeURIComponent(r)))},bytesToString:function(r){return decodeURIComponent(escape(t.bytesToString(r)))}};var t=r.Binary={stringToBytes:function(r){for(var t=[],n=0;n<r.length;n++)t.push(255&r.charCodeAt(n));return t},bytesToString:function(r){for(var t=[],n=0;n<r.length;n++)t.push(String.fromCharCode(r[n]));return t.join("")}}}(),r=h.Crypto,v=r.util,t=r.charenc,p=t.UTF8,o=t.Binary,d=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298],(e=r.SHA256=function(r,t){var n=v.wordsToBytes(e._sha256(r));return t&&t.asBytes?n:t&&t.asString?o.bytesToString(n):v.bytesToHex(n)})._sha256=function(r){r.constructor==String&&(r=p.stringToBytes(r));var t,n,o,e,i,s,a,u,c,f,y,g=v.bytesToWords(r),h=8*r.length,l=(r=[1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225],[]);for(g[h>>5]|=128<<24-h%32,g[15+(h+64>>9<<4)]=h,u=0;u<g.length;u+=16){for(h=r[0],t=r[1],n=r[2],o=r[3],e=r[4],i=r[5],s=r[6],a=r[7],c=0;c<64;c++){c<16?l[c]=g[c+u]:(f=l[c-15],y=l[c-2],l[c]=((f<<25|f>>>7)^(f<<14|f>>>18)^f>>>3)+(l[c-7]>>>0)+((y<<15|y>>>17)^(y<<13|y>>>19)^y>>>10)+(l[c-16]>>>0)),y=h&t^h&n^t&n;var B=(h<<30|h>>>2)^(h<<19|h>>>13)^(h<<10|h>>>22);f=(a>>>0)+((e<<26|e>>>6)^(e<<21|e>>>11)^(e<<7|e>>>25))+(e&i^~e&s)+d[c]+(l[c]>>>0),a=s,s=i,i=e,e=o+f>>>0,o=n,n=t,t=h,h=f+(y=B+y)>>>0}r[0]+=h,r[1]+=t,r[2]+=n,r[3]+=o,r[4]+=e,r[5]+=i,r[6]+=s,r[7]+=a}return r},e._blocksize=16,e._digestsize=32,n=h.Crypto,s=n.util,i=n.charenc,a=i.UTF8,u=i.Binary,n.HMAC=function(r,t,n,o){t.constructor==String&&(t=a.stringToBytes(t)),n.constructor==String&&(n=a.stringToBytes(n)),n.length>4*r._blocksize&&(n=r(n,{asBytes:!0}));for(var e=n.slice(0),i=(n=n.slice(0),0);i<4*r._blocksize;i++)e[i]^=92,n[i]^=54;return r=r(e.concat(r(n.concat(t),{asBytes:!0})),{asBytes:!0}),o&&o.asBytes?r:o&&o.asString?u.bytesToString(r):s.bytesToHex(r)},l=h.Crypto,B=l.util,c=l.charenc,T=c.UTF8,b=c.Binary,l.PBKDF2=function(r,t,n,o){function e(r,t){return l.HMAC(i,t,r,{asBytes:!0})}r.constructor==String&&(r=T.stringToBytes(r)),t.constructor==String&&(t=T.stringToBytes(t));for(var i=o&&o.hasher||l.SHA1,s=o&&o.iterations||1,a=[],u=1;a.length<n;){for(var c=e(r,t.concat(B.wordsToBytes([u]))),f=c,y=1;y<s;y++){f=e(r,f);for(var g=0;g<c.length;g++)c[g]^=f[g]}a=a.concat(c),u++}return a.length=n,o&&o.asBytes?a:o&&o.asString?b.bytesToString(a):B.bytesToHex(a)}}("undefined"!=typeof exports?exports:window);</script><script>nil=function(){var a=document.forms[0].elements,e=function(){Crypto_scrypt(a.hash.value,a.pass.value,32,8,1,64,function(e){mash=String.fromCharCode.apply(null,e).replace(/[^\x20-\x7e]/g,""),a.lno.checked&&(mash=String.fromCharCode.apply(null,e).replace(/[^\x30-\x39\x41-\x5a\x41-\x5a\x61-\x7a]/g,"")),a.mash.value=mash,""!=a.pass.value&&a.mash.select(),pf=function(){a.mash.select(),a.mash.selectionStart=0,a.mash.selectionEnd=mash.length,document.execCommand("copy"),setTimeout(function(){a.mash.select(),a.mash.selectionStart=0,a.mash.selectionEnd=mash.length,document.execCommand("copy")},60)},a.mash.onclick=pf,a.mash.ontouchend=pf})};a.submit.style.display="none",a.hash.onchange=e,a.pass.onchange=e,a.lno.onchange=e}();</script></body></html>
+<html><head><meta http-equiv="Content-type" content="text/html; charset=utf-8"><title>HashPash</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></head><style type="text/css">*{font-family:sans-serif;font-weight:300;border-radius:.1em;line-height:1.5}label,input[type="password"],input[type="submit"],input[type="text"]{width:100%;float:left}input{margin:0 0 1em;font-size:1em;border:0;padding:.3em}form{background:#036;color:#fff;float:left;padding:1em;}section,footer{width:100%;float:left;clear:left;}footer{font-size:0.7em;border-top:1px solid #eee;padding: 1em 0;}input[name=mash]{background:#036;color:#777;margin:0}a{color:#036;}</style><body><h1>HashPash</h1><p>Make unique passwords without writing them down. How? Read <a href="#howitworks">how it works</a>.</p><form method="post"><label>Hash (e.g. Facebook):<input name="hash" type="text" autocorrect="off" placeholder="sitename" autocapitalize="off"><br/></label><label>Pash(word):<input name="pass" type="password" autocorrect="off" autocapitalize="off"><br/></label><input type="submit" value="Mash it" name="submit"/><br/><label>Mash (the unique password):<input name="mash" type="text" readonly="readonly"><br/></label><label><input type="checkbox" name="lno"> Letters and numbers only</label></form><section><h3 id="howitworks">How it works</h3><ol><li>Enter the sitename (the hash) you want to create an unique password for</li><li>Enter your (reusable) Pashword</li><li>Copy the generated password (the mash) and you're save to go.</li></ol></section><section><h3>Save to go?</h3><p>HashPash uses the strong <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a> function,which makes it practically impossible for someone who has obtained the generated mash to decrypt it back to yourvery private Pashword.</p><h3>Don't trust this server?</h3><p>Save this page somewhere you'd like to keep it save. It works even from your Documents-folder and/or without an internet connection!</p></section><footer>HashPash was made by <a href="https://murb.nl">murb</a>.</footer><script>/*
+* Copyright (c) 2010-2011 Intalio Pte, All Rights Reserved (https://github.com/cheongwy/node-scrypt-js)
+* Copyright (c) 2013 Joey Hewitt
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
+(function(exports) {
+"use strict";
+var MAX_VALUE = 2147483647;
+var workerUrl = null;
+
+/*function scrypt(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
+ * N = Cpu cost
+ * r = Memory cost
+ * p = parallelization cost
+ *
+ */
+exports.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback, maxThreads) {
+    if (N == 0 || (N & (N - 1)) != 0) throw new Error("N must be > 0 and a power of 2");
+
+    if (N > MAX_VALUE / 128 / r) throw new Error("N is too large");
+    if (r > MAX_VALUE / 128 / p) throw new Error("r is too large");
+
+    var PBKDF2_opts = {iterations: 1, hasher: exports.Crypto.SHA256, asBytes: true};
+
+    var B = exports.Crypto.PBKDF2(passwd, salt, p * 128 * r, PBKDF2_opts);
+
+    try {
+        var workerI = 0;
+        var worksDone = 0;
+        var makeWorker = function() {
+            if (!workerUrl) {
+                var code = '('+scryptCore.toString()+')()';
+                var blob;
+                try {
+                    blob = new Blob([code], {type: "text/javascript"});
+                } catch(e) {
+                    window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
+                    blob = new BlobBuilder();
+                    blob.append(code);
+                    blob = blob.getBlob("text/javascript");
+                }
+                workerUrl = URL.createObjectURL(blob);
+            }
+            var worker = new Worker(workerUrl);
+            worker.onmessage = function(event) {
+                var Bi = event.data[0], Bslice = event.data[1];
+
+                if (workerI < p) {
+                    worker.postMessage([N, r, p, B, workerI++]);
+                }
+
+                var length = Bslice.length, destPos = Bi * 128 * r, srcPos = 0;
+                while (length--) {
+                    B[destPos++] = Bslice[srcPos++];
+                }
+
+                if (++worksDone == p) {
+                    callback(exports.Crypto.PBKDF2(passwd, B, dkLen, PBKDF2_opts));
+                }
+            };
+            return worker;
+        };
+        for (var threadN = Math.min(maxThreads || 2, p); threadN > 0; threadN--) {
+            makeWorker().postMessage([N, r, p, B, workerI++]);
+        }
+    } catch (e) {
+        setTimeout(function() {
+            scryptCore();
+            callback(exports.Crypto.PBKDF2(passwd, B, dkLen, PBKDF2_opts));
+        }, 0);
+    }
+
+    /* using this function to enclose everything needed to create a worker (but also invokable directly for synchronous use)*/
+    function scryptCore() {
+        var XY, V;
+
+        if (typeof B === 'undefined') {
+            onmessage = function(event) {
+                var data = event.data;
+                var N = data[0], r = data[1], p = data[2], B = data[3], i = data[4];
+
+                if (!XY) {
+                    alloc(r, N);
+                }
+
+                var Bslice = [];
+                arraycopy32(B, i * 128 * r, Bslice, 0, 128 * r);
+                smix(Bslice, 0, r, N, V, XY);
+
+                postMessage([i, Bslice]);
+            };
+        } else {
+            if (!XY) {
+                alloc(r, N);
+            }
+            for(var i = 0; i < p; i++) {
+                smix(B, i * 128 * r, r, N, V, XY);
+            }
+        }
+
+        function alloc(r, N) {
+            try {
+                XY = new Uint8Array(256 * r);
+                V = new Uint8Array(128 * r * N);
+            } catch (e) {
+                XY = [], V = [];
+            }
+        }
+
+        function smix(B, Bi, r, N, V, XY) {
+            var Xi = 0;
+            var Yi = 128 * r;
+            var i;
+
+            arraycopy32(B, Bi, XY, Xi, Yi);
+
+            for (i = 0; i < N; i++) {
+                arraycopy32(XY, Xi, V, i * Yi, Yi);
+                blockmix_salsa8(XY, Xi, Yi, r);
+            }
+
+            for (i = 0; i < N; i++) {
+                var j = integerify(XY, Xi, r) & (N - 1);
+                blockxor(V, j * Yi, XY, Xi, Yi);
+                blockmix_salsa8(XY, Xi, Yi, r);
+            }
+
+            arraycopy32(XY, Xi, B, Bi, Yi);
+        }
+
+        function blockmix_salsa8(BY, Bi, Yi, r) {
+            var X = [];
+            var i;
+
+            arraycopy32(BY, Bi + (2 * r - 1) * 64, X, 0, 64);
+
+            for (i = 0; i < 2 * r; i++) {
+                blockxor(BY, i * 64, X, 0, 64);
+                salsa20_8(X);
+                arraycopy32(X, 0, BY, Yi + (i * 64), 64);
+            }
+
+            for (i = 0; i < r; i++) {
+                arraycopy32(BY, Yi + (i * 2) * 64, BY, Bi + (i * 64), 64);
+            }
+
+            for (i = 0; i < r; i++) {
+                arraycopy32(BY, Yi + (i * 2 + 1) * 64, BY, Bi + (i + r) * 64, 64);
+            }
+        }
+
+        function R(a, b) {
+            return (a << b) | (a >>> (32 - b));
+        }
+
+        function salsa20_8(B) {
+            var B32 = new Array(32);
+            var x   = new Array(32);
+            var i;
+
+            for (i = 0; i < 16; i++) {
+                B32[i]  = (B[i * 4 + 0] & 0xff) << 0;
+                B32[i] |= (B[i * 4 + 1] & 0xff) << 8;
+                B32[i] |= (B[i * 4 + 2] & 0xff) << 16;
+                B32[i] |= (B[i * 4 + 3] & 0xff) << 24;
+            }
+
+            arraycopy(B32, 0, x, 0, 16);
+
+            for (i = 8; i > 0; i -= 2) {
+                x[ 4] ^= R(x[ 0]+x[12], 7);  x[ 8] ^= R(x[ 4]+x[ 0], 9);
+                x[12] ^= R(x[ 8]+x[ 4],13);  x[ 0] ^= R(x[12]+x[ 8],18);
+                x[ 9] ^= R(x[ 5]+x[ 1], 7);  x[13] ^= R(x[ 9]+x[ 5], 9);
+                x[ 1] ^= R(x[13]+x[ 9],13);  x[ 5] ^= R(x[ 1]+x[13],18);
+                x[14] ^= R(x[10]+x[ 6], 7);  x[ 2] ^= R(x[14]+x[10], 9);
+                x[ 6] ^= R(x[ 2]+x[14],13);  x[10] ^= R(x[ 6]+x[ 2],18);
+                x[ 3] ^= R(x[15]+x[11], 7);  x[ 7] ^= R(x[ 3]+x[15], 9);
+                x[11] ^= R(x[ 7]+x[ 3],13);  x[15] ^= R(x[11]+x[ 7],18);
+                x[ 1] ^= R(x[ 0]+x[ 3], 7);  x[ 2] ^= R(x[ 1]+x[ 0], 9);
+                x[ 3] ^= R(x[ 2]+x[ 1],13);  x[ 0] ^= R(x[ 3]+x[ 2],18);
+                x[ 6] ^= R(x[ 5]+x[ 4], 7);  x[ 7] ^= R(x[ 6]+x[ 5], 9);
+                x[ 4] ^= R(x[ 7]+x[ 6],13);  x[ 5] ^= R(x[ 4]+x[ 7],18);
+                x[11] ^= R(x[10]+x[ 9], 7);  x[ 8] ^= R(x[11]+x[10], 9);
+                x[ 9] ^= R(x[ 8]+x[11],13);  x[10] ^= R(x[ 9]+x[ 8],18);
+                x[12] ^= R(x[15]+x[14], 7);  x[13] ^= R(x[12]+x[15], 9);
+                x[14] ^= R(x[13]+x[12],13);  x[15] ^= R(x[14]+x[13],18);
+            }
+
+            for (i = 0; i < 16; ++i) B32[i] = x[i] + B32[i];
+
+            for (i = 0; i < 16; i++) {
+                var bi = i * 4;
+                B[bi + 0] = (B32[i] >> 0  & 0xff);
+                B[bi + 1] = (B32[i] >> 8  & 0xff);
+                B[bi + 2] = (B32[i] >> 16 & 0xff);
+                B[bi + 3] = (B32[i] >> 24 & 0xff);
+            }
+        }
+
+        function blockxor(S, Si, D, Di, len) {
+            var i = len>>6;
+            while (i--) {
+              for(var j=0; j<32;j++){
+                D[Di++] ^= S[Si++]; D[Di++] ^= S[Si++];
+              }
+            }
+        }
+
+        function integerify(B, bi, r) {
+            var n;
+
+            bi += (2 * r - 1) * 64;
+
+            n  = (B[bi + 0] & 0xff) << 0;
+            n |= (B[bi + 1] & 0xff) << 8;
+            n |= (B[bi + 2] & 0xff) << 16;
+            n |= (B[bi + 3] & 0xff) << 24;
+
+            return n;
+        }
+
+        function arraycopy(src, srcPos, dest, destPos, length) {
+             while (length-- ){
+                 dest[destPos++] = src[srcPos++];
+             }
+        }
+
+        function arraycopy32(src, srcPos, dest, destPos, length) {
+            var i = length>>5;
+            while(i--) {
+              for(var j=0; j<16;j++){
+                dest[destPos++] = src[srcPos++]; dest[destPos++] = src[srcPos++];
+              }
+            }
+        }
+    }
+};
+
+
+
+/*
+ * Crypto-JS v2.5.4
+ * http://code.google.com/p/crypto-js/
+ * (c) 2009-2012 by Jeff Mott. All rights reserved.
+ * http://code.google.com/p/crypto-js/wiki/License
+ */
+(typeof Crypto=="undefined"||!Crypto.util)&&function(){var abc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";var d=exports.Crypto={},k=d.util={rotl:function(b,a){return b<<a|b>>>32-a},rotr:function(b,a){return b<<32-a|b>>>a},endian:function(b){if(b.constructor==Number)return k.rotl(b,8)&16711935|k.rotl(b,24)&4278255360;for(var a=0;a<b.length;a++)b[a]=k.endian(b[a]);return b},randomBytes:function(b){for(var a=[];b>0;b--)a.push(Math.floor(Math.random()*256));return a},bytesToWords:function(b){for(var a=[],c=0,e=0;c<b.length;c++,e+=8)a[e>>>5]|=(b[c]&255)<<
+24-e%32;return a},wordsToBytes:function(b){for(var a=[],c=0;c<b.length*32;c+=8)a.push(b[c>>>5]>>>24-c%32&255);return a},bytesToHex:function(b){for(var a=[],c=0;c<b.length;c++)a.push((b[c]>>>4).toString(16)),a.push((b[c]&15).toString(16));return a.join("")},hexToBytes:function(b){for(var a=[],c=0;c<b.length;c+=2)a.push(parseInt(b.substr(c,2),16));return a},bytesToBase64:function(b){for(var a=[],c=0;c<b.length;c+=3)for(var e=b[c]<<16|b[c+1]<<8|b[c+2],t=0;t<4;t++)c*8+t*6<=b.length*8?a.push(abc.charAt(e>>>
+6*(3-t)&63)):a.push("=");return a.join("")},base64ToBytes:function(b){for(var b=b.replace(/[^A-Z0-9+\/]/ig,""),a=[],c=0,e=0;c<b.length;e=++c%4)e!=0&&a.push((abc.indexOf(b.charAt(c-1))&Math.pow(2,-2*e+8)-1)<<e*2|abc.indexOf(b.charAt(c))>>>6-e*2);return a}},d=d.charenc={};d.UTF8={stringToBytes:function(b){return f.stringToBytes(unescape(encodeURIComponent(b)))},bytesToString:function(b){return decodeURIComponent(escape(f.bytesToString(b)))}};
+var f=d.Binary={stringToBytes:function(b){for(var a=[],c=0;c<b.length;c++)a.push(b.charCodeAt(c)&255);return a},bytesToString:function(b){for(var a=[],c=0;c<b.length;c++)a.push(String.fromCharCode(b[c]));return a.join("")}}}();
+(function(){var d=exports.Crypto,k=d.util,f=d.charenc,b=f.UTF8,a=f.Binary,c=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,
+2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298],e=d.SHA256=function(b,c){var g=k.wordsToBytes(e._sha256(b));return c&&c.asBytes?g:c&&c.asString?a.bytesToString(g):k.bytesToHex(g)};e._sha256=function(a){a.constructor==String&&(a=b.stringToBytes(a));var e=k.bytesToWords(a),g=a.length*8,a=[1779033703,3144134277,
+1013904242,2773480762,1359893119,2600822924,528734635,1541459225],d=[],f,i,r,h,m,q,n,u,j,o,l;e[g>>5]|=128<<24-g%32;e[(g+64>>9<<4)+15]=g;for(u=0;u<e.length;u+=16){g=a[0];f=a[1];i=a[2];r=a[3];h=a[4];m=a[5];q=a[6];n=a[7];for(j=0;j<64;j++){j<16?d[j]=e[j+u]:(o=d[j-15],l=d[j-2],d[j]=((o<<25|o>>>7)^(o<<14|o>>>18)^o>>>3)+(d[j-7]>>>0)+((l<<15|l>>>17)^(l<<13|l>>>19)^l>>>10)+(d[j-16]>>>0));l=g&f^g&i^f&i;var w=(g<<30|g>>>2)^(g<<19|g>>>13)^(g<<10|g>>>22);o=(n>>>0)+((h<<26|h>>>6)^(h<<21|h>>>11)^(h<<7|h>>>25))+
+(h&m^~h&q)+c[j]+(d[j]>>>0);l=w+l;n=q;q=m;m=h;h=r+o>>>0;r=i;i=f;f=g;g=o+l>>>0}a[0]+=g;a[1]+=f;a[2]+=i;a[3]+=r;a[4]+=h;a[5]+=m;a[6]+=q;a[7]+=n}return a};e._blocksize=16;e._digestsize=32})();
+(function(){var d=exports.Crypto,k=d.util,f=d.charenc,b=f.UTF8,a=f.Binary;d.HMAC=function(c,e,d,f){e.constructor==String&&(e=b.stringToBytes(e));d.constructor==String&&(d=b.stringToBytes(d));d.length>c._blocksize*4&&(d=c(d,{asBytes:!0}));for(var g=d.slice(0),d=d.slice(0),s=0;s<c._blocksize*4;s++)g[s]^=92,d[s]^=54;c=c(g.concat(c(d.concat(e),{asBytes:!0})),{asBytes:!0});return f&&f.asBytes?c:f&&f.asString?a.bytesToString(c):k.bytesToHex(c)}})();
+(function(){var d=exports.Crypto,k=d.util,f=d.charenc,b=f.UTF8,a=f.Binary;d.PBKDF2=function(c,e,f,p){function g(a,b){return d.HMAC(s,b,a,{asBytes:!0})}c.constructor==String&&(c=b.stringToBytes(c));e.constructor==String&&(e=b.stringToBytes(e));for(var s=p&&p.hasher||d.SHA1,v=p&&p.iterations||1,i=[],r=1;i.length<f;){for(var h=g(c,e.concat(k.wordsToBytes([r]))),m=h,q=1;q<v;q++)for(var m=g(c,m),n=0;n<h.length;n++)h[n]^=m[n];i=i.concat(h);r++}i.length=f;return p&&p.asBytes?i:p&&p.asString?a.bytesToString(i):k.bytesToHex(i)}})();
+
+
+})(typeof exports != 'undefined' ? exports : window);
+</script><script>nil=function(){
+  var dfe = document.forms[0].elements
+  var mashIt = function() {
+    Crypto_scrypt(
+      dfe["hash"].value,
+      dfe["pass"].value,
+      32, 8, 1, 64, function(result){
+        mash = String.fromCharCode.apply(null, result).replace(/[^\x20-\x7e]/g, "");
+        if (dfe["lno"].checked) {
+          mash = String.fromCharCode.apply(null, result).replace(/[^\x30-\x39\x41-\x5a\x41-\x5a\x61-\x7a]/g, "");
+        }
+    		dfe["mash"].value = mash
+        if (dfe["pass"].value != "") dfe["mash"].select();
+        pf = function(e){
+          dfe["mash"].select();
+          dfe["mash"].selectionStart=0;
+          dfe["mash"].selectionEnd=mash.length;
+          document.execCommand("copy");
+          setTimeout(function(e){
+            dfe["mash"].select();
+            dfe["mash"].selectionStart=0;
+            dfe["mash"].selectionEnd=mash.length;
+            document.execCommand("copy");
+          },60)
+        };
+        dfe["mash"].onclick = pf;
+        dfe["mash"].ontouchend = pf;
+      }
+    );
+  }
+  dfe["submit"].style.display = 'none';
+  dfe["hash"].onchange = mashIt;
+  dfe["pass"].onchange = mashIt;
+  dfe["lno"].onchange = mashIt;
+}()</script></body></html>

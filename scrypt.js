@@ -25,8 +25,7 @@
 var MAX_VALUE = 2147483647;
 var workerUrl = null;
 
-//function scrypt(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
-/*
+/*function scrypt(byte[] passwd, byte[] salt, int N, int r, int p, int dkLen)
  * N = Cpu cost
  * r = Memory cost
  * p = parallelization cost
@@ -88,7 +87,7 @@ exports.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback, maxThre
         }, 0);
     }
 
-    // using this function to enclose everything needed to create a worker (but also invokable directly for synchronous use)
+    /* using this function to enclose everything needed to create a worker (but also invokable directly for synchronous use)*/
     function scryptCore() {
         var XY, V;
 
@@ -251,8 +250,8 @@ exports.Crypto_scrypt = function(passwd, salt, N, r, p, dkLen, callback, maxThre
               }
             }
         }
-    } // scryptCore
-}; // Crypto_scrypt
+    }
+};
 
 
 
